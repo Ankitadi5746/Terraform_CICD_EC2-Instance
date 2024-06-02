@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('git checkout') {
+            steps {
+                git branch: 'main', credentialsId: 'GIT', url: 'https://github.com/Ankitadi5746/Terraform_CICD_EC2-Instance.git'
+            }
+        }
+        stage('terraform version') {
+            steps {
+                sh 'terraform version'
+            }
+        }
+        stage('terraform init') {
+            steps {
+                sh 'terraform init'
+            }
+        }
+        stage('terraform validate') {
+            steps {
+                sh 'terraform validate'
+            }
+        }
+        stage('terraform plan') {
+            steps {
+                sh 'terraform plan'
+            }
+        }
+        stage('terraform apply/destroy') {
+            steps {
+                sh 'terraform ${action} --auto-approve'
+            }
+        }
+    }
+}
