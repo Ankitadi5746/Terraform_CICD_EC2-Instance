@@ -3,6 +3,6 @@ resource "aws_instance" "awsec2" {
   instance_type = "t2.micro"
   key_name = "redhat"
   tags = {
-    Name = "EC2_WEBHOOK"
+    Name = "EC2_WEBHOOK12"
   }
 }
